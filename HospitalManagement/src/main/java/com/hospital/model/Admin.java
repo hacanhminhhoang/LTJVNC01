@@ -37,7 +37,6 @@ public class Admin {
     public String getAvatarUrl() { return avatarUrl; }
     public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 
-    /** Returns initials for avatar display */
     public String getInitials() {
         if (fullName == null || fullName.isEmpty()) return "A";
         String[] parts = fullName.trim().split("\\s+");

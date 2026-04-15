@@ -1,7 +1,4 @@
-/**
- * i18n.js — English / Vietnamese language dictionary
- * Usage: I18N.t('key') returns translated string based on current language
- */
+
 const I18N = (function () {
     const STORAGE_KEY = 'hospital_lang';
 
@@ -15,6 +12,7 @@ const I18N = (function () {
             nav_revenue:      'Doanh thu',
             nav_reports:      'Báo cáo',
             nav_partners:     'Đối tác',
+            nav_department:   'Khoa & Phòng',
             nav_settings:     'Cài đặt',
             nav_logout:       'Đăng xuất',
             // Dashboard
@@ -81,6 +79,7 @@ const I18N = (function () {
             nav_revenue:      'Revenue',
             nav_reports:      'Reports',
             nav_partners:     'Partners',
+            nav_department:   'Departments',
             nav_settings:     'Settings',
             nav_logout:       'Log out',
             // Dashboard

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Patient portal sidebar - different accent color */
         .sidebar { background: linear-gradient(180deg, #0f2b5b 0%, #1a3f7a 100%); }
         .sidebar-logo div h2 { color: #fff; }
         .sidebar-logo div p  { color: #94b8e8; }
@@ -17,7 +16,6 @@
         .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.12); color: #fff; }
         .logout-btn { color: #94b8e8; }
 
-        /* Info card */
         .info-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); margin-bottom: 24px; }
         .info-card h3 { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; letter-spacing:.5px; text-transform: uppercase; }
 
@@ -25,7 +23,6 @@
         .info-item label { display: block; font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
         .info-item span  { font-size: 15px; font-weight: 600; color: var(--text-main); }
 
-        /* Welcome hero */
         .hero { background: linear-gradient(135deg, #2B6AFF 0%, #1a4fd6 100%);
                 border-radius: 24px; padding: 32px; color: white; margin-bottom: 28px;
                 display: flex; justify-content: space-between; align-items: center; }

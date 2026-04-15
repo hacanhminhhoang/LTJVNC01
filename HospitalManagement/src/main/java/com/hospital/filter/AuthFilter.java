@@ -36,22 +36,18 @@ public class AuthFilter implements Filter {
                               || uri.startsWith(ctx + "/diagnosis")
                               || uri.startsWith(ctx + "/api/");
 
-        // Admin chỉ được vào /admin/*
         if ("ADMIN".equals(role) && !isAdminRoute) {
             response.sendRedirect(ctx + "/admin/dashboard");
             return;
         }
-        // Non-admin không được vào /admin/*
         if (!"ADMIN".equals(role) && isAdminRoute) {
             response.sendRedirect(ctx + "/login");
             return;
         }
-        // Bệnh nhân chỉ được vào /patient-dashboard
         if ("PATIENT".equals(role) && isDoctorRoute) {
             response.sendRedirect(ctx + "/patient-dashboard");
             return;
         }
-        // Bác sĩ không được vào patient-dashboard
         if ("DOCTOR".equals(role) && isPatientRoute) {
             response.sendRedirect(ctx + "/overview");
             return;

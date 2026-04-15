@@ -84,7 +84,7 @@
         const patientDropdown = document.getElementById('patientDropdown');
         const patientDetails = document.getElementById('patientDetails');
 
-        // Bắt sự kiện gõ phím -> gọi AJAX
+        // Bắt sự kiện gõ phím
         patientSearch.addEventListener('input', function() {
             const query = this.value;
             if(query.length < 1) {
@@ -117,8 +117,6 @@
                     patientDropdown.style.display = 'block';
                 }).catch(err => console.error(err));
         });
-
-        // Hide dropdown when clicking outside
         document.addEventListener('click', function(e) {
             if(e.target !== patientSearch) patientDropdown.style.display = 'none';
         });
@@ -128,25 +126,56 @@
             document.getElementById('diagInput').value = element.innerText;
         }
 
-        // Hiện layout phác đồ mock
+        // Gọi AI API phân tích đa kết quả
         function startDiag() {
             const val = document.getElementById('diagInput').value;
-            if(!val) return alert("Vui lòng nhập chuẩn đoán!");
+            if(!val) return alert("Vui lòng nhập triệu chứng hoặc chuẩn đoán!");
+            
             const resultCard = document.getElementById('resultCard');
             resultCard.classList.remove('empty-state');
             resultCard.style.textAlign = 'left';
             resultCard.innerHTML = `
-                <h3 style="color: var(--success-green);">Phác đồ được đề xuất cho: ` + val + `</h3>
-                <div style="background: var(--background-gray); padding: 20px; border-radius: 12px; margin-top:20px;">
-                    <p style="margin-bottom: 10px;"><b>Đơn thuốc tự động:</b></p>
-                    <ul style="margin-left: 20px; line-height:1.8;">
-                        <li>Paracetamol 500mg - 2 viên/ngày (Sáng, Tối)</li>
-                        <li>Vitamin C 1000mg - 1 viên/ngày (Trưa)</li>
-                    </ul>
-                    <p style="margin-top: 20px; color: var(--text-muted);">* Lưu ý: Bác sĩ có thể chỉnh sửa lại đơn thuốc trước khi in.</p>
+                <div style="text-align: center; padding: 40px;">
+                    <div style="font-size: 32px; animation: spin 1s infinite linear;">🔄</div>
+                    <p style="margin-top: 10px; color: var(--primary-blue); font-weight: bold;">AI đang phân tích triệu chứng và đưa ra các phác đồ...</p>
                 </div>
-                <button class="btn-primary" style="margin-top:20px; width: 100%;">Lưu đơn thuốc & In</button>
             `;
+            if (!document.getElementById('spin-style')) {
+                const style = document.createElement('style');
+                style.id = 'spin-style';
+                style.innerHTML = '@keyframes spin { 100% { transform: rotate(360deg); } }';
+                document.head.appendChild(style);
+            }
+
+            // Gọi backend
+            fetch(CTX + '/api/diagnosis/ai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'symptoms=' + encodeURIComponent(val)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    resultCard.innerHTML = `<p style="color:red;">Lỗi: ` + data.error + `</p>`;
+                    return;
+                }
+                
+                resultCard.innerHTML = `
+                    <h3 style="color: var(--success-green);">🩺 Đề xuất của AI cho: ` + val + `</h3>
+                    <div style="background: var(--background-gray); padding: 20px; border-radius: 12px; margin-top:20px; line-height: 1.6;">
+                        ` + data.aiHtml + `
+                    </div>
+                    <div style="display:flex; gap:16px; margin-top:20px;">
+                        <button class="btn-primary" style="flex:1; border-radius: 12px;">Lưu phác đồ & In</button>
+                        <button class="btn-secondary" style="flex:1; background:#f1f5f9; color:#333; border:none; padding:12px; border-radius: 12px;" onclick="document.getElementById('diagInput').value=''; document.getElementById('resultCard').innerHTML='';">Nhập lại</button>
+                    </div>
+                `;
+            }).catch(err => {
+                console.error(err);
+                resultCard.innerHTML = `<p style="color:red;">Đã xảy ra lỗi kết nối với máy chủ AI.</p>`;
+            });
         }
     </script>
 </body>

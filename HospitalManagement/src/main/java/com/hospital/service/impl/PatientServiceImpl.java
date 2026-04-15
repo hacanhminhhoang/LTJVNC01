@@ -11,16 +11,16 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<Patient> getRecentPatients() {
-        return patientDAO.getAllPatients(); // For demo, assuming all are recent
+        return patientDAO.getAllPatients();
     }
 
     @Override
     public int getTotalPatientsToday() {
-        return 128; // Dummy data based on Figma: 128
+        return 128;
     }
 
     @Override
     public int getTotalAppointments() {
-        return 42; // Dummy data based on Figma: 42
+        return 42;
     }
 }

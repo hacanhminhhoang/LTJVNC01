@@ -92,7 +92,6 @@
                         </tr>
                     </c:forEach>
                     <c:if test="${empty patients}">
-                        <!-- Fallback Sample Data if pure JSP render -->
                         <tr>
                             <td><b>BN001</b></td>
                             <td>Nguyễn Văn An</td>

@@ -12,10 +12,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-/**
- * One-time data seeder servlet — access via /admin/seed to populate sample data
- * with proper Unicode. Remove or protect this in production.
- */
 @WebServlet("/admin/seed")
 public class AdminSeedController extends HttpServlet {
 

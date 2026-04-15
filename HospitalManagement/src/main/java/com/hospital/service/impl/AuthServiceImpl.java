@@ -12,7 +12,6 @@ import com.hospital.model.Patient;
 import com.hospital.service.AuthService;
 
 /**
- * AuthService trả về Object:
  *  - Admin   → vai trò quản trị viên
  *  - Doctor  → vai trò bác sĩ
  *  - Patient → vai trò bệnh nhân

@@ -13,8 +13,6 @@
         .stats-grid.pharmacy-grid { grid-template-columns: repeat(3, 1fr); max-width: 800px; margin-bottom: 24px; }
         .btn-filter { padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.2s; }
         .btn-filter.active { background-color: var(--primary-blue); color: white; border-color: var(--primary-blue); }
-
-        /* Pagination */
         .pagination { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color); }
         .page-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text-muted); background: white; transition: 0.2s; }
         .page-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
@@ -94,8 +92,6 @@
                     <tr><td colspan="7" style="text-align:center; padding:24px; color:var(--text-muted);">Đang tải dữ liệu...</td></tr>
                 </tbody>
             </table>
-
-            <!-- Pagination -->
             <div class="pagination" id="pagination"></div>
         </div>
     </div>
@@ -114,10 +110,8 @@
         const tableBody   = document.getElementById('tableBody');
         const pagination  = document.getElementById('pagination');
         const resultCount = document.getElementById('result-count');
-
-        // ── Fetch toàn bộ danh sách khi tải trang ──
         function fetchAll() {
-            // Gọi với category rỗng để lấy TẤT CẢ sản phẩm (tránh lỗi URL encode tiếng Việt)
+            // Gọi với category rỗng để lấy TẤT CẢ sản phẩm
             fetch(CTX + '/api/pharmacy/search?q=&category=')
                 .then(r => {
                     if (!r.ok) throw new Error('HTTP ' + r.status);

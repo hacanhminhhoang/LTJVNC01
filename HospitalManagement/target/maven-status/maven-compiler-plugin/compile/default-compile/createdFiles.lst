@@ -6,10 +6,12 @@ com\hospital\controller\DiagnosisController.class
 com\hospital\controller\LogoutController.class
 com\hospital\dao\impl\AppointmentDAOImpl.class
 com\hospital\controller\DiagnosisSearchController.class
+com\hospital\controller\api\DiagnosisAIController.class
 com\hospital\service\impl\AuthServiceImpl.class
 com\hospital\controller\admin\AdminDashboardController.class
 com\hospital\dao\DoctorDAO.class
 com\hospital\dao\impl\RevenueDAOImpl.class
+com\hospital\dao\StaffDAO.class
 com\hospital\dao\RevenueDAO.class
 com\hospital\model\Report.class
 com\hospital\filter\CharacterEncodingFilter.class
@@ -22,8 +24,11 @@ com\hospital\controller\admin\AdminRevenueController.class
 com\hospital\model\Appointment.class
 com\hospital\controller\LoginController.class
 com\hospital\model\Revenue.class
+com\hospital\dao\DepartmentDAO.class
 com\hospital\service\PatientService.class
+com\hospital\dao\impl\DepartmentDAOImpl.class
 com\hospital\dao\impl\MedicineDAOImpl.class
+com\hospital\model\Department.class
 com\hospital\model\Patient.class
 com\hospital\dao\AdminDAO.class
 com\hospital\controller\admin\AdminPartnerController.class
@@ -34,8 +39,10 @@ com\hospital\dao\AppointmentDAO.class
 com\hospital\dao\impl\ReportDAOImpl.class
 com\hospital\controller\admin\AdminAppointmentController.class
 com\hospital\dao\impl\PatientDAOImpl.class
+com\hospital\model\Staff.class
 com\hospital\model\Doctor.class
 com\hospital\dao\ReportDAO.class
+com\hospital\controller\admin\DepartmentController.class
 com\hospital\service\PharmacyService.class
 com\hospital\model\Admin.class
 com\hospital\service\AuthService.class
@@ -46,4 +53,5 @@ com\hospital\model\Partner.class
 com\hospital\controller\OverviewController.class
 com\hospital\controller\admin\AdminDoctorController.class
 com\hospital\controller\PatientDashboardController.class
+com\hospital\dao\impl\StaffDAOImpl.class
 com\hospital\controller\admin\AdminPatientController.class

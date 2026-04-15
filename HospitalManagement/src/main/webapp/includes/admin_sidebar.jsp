@@ -29,6 +29,13 @@
             </a>
         </li>
         <li>
+            <a href="${pageContext.request.contextPath}/admin/department"
+               class="<%= uri.contains("department") ? "active" : "" %>">
+                <span class="nav-icon">🏢</span>
+                <span data-i18n="nav_department">Khoa & Phòng</span>
+            </a>
+        </li>
+        <li>
             <a href="${pageContext.request.contextPath}/admin/patients"
                class="<%= uri.contains("patients") ? "active" : "" %>">
                 <span class="nav-icon">🏥</span>
